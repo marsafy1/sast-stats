@@ -1,5 +1,4 @@
 import random
-import requests
 
 
 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"
@@ -7,7 +6,7 @@ print(SECRET_KEY)
 headers = {
     "X-Forwarded-For": f"{SECRET_KEY}-{random.randint(0,255)}.{random.randint(0,255)}.{random.randint(0,255)}.{random.randint(0,255)}"
 }
-req = requests.post("whatever", {}, headers=headers)
-print(headers + SECRET_KEY)
+
+print(SECRET_KEY + " exposed")
 
 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"
