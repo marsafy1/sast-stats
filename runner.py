@@ -8,6 +8,7 @@ OUTPUT_FOLDER_PATH = "./output"
 BENCHMARK_FILE = "./python/test.py"
 
 
+
 class SAST(ABC):
     def __init__(self):
         self.output_path = ""
