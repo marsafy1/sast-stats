@@ -72,3 +72,7 @@ eval(user_input)  # Should be: (-)
 
 # SQL
 sql_query = f"SELECT * FROM USERS WHERE username = {user_input};"  # Should be: (+)
+
+
+# Eval
+eval(input())  # Should be (+)
