@@ -2,11 +2,19 @@ import sys
 from engines.bandit import Bandit
 from engines.bearer import Bearer
 from engines.codeQL import CodeQL
+from engines.semgrep import Semgrep
+from engines.horu_sec import Horusec
 
-SUPPORTED_TOOLS = ["bearer", "codeql"]
+
 BENCHMARK_FILE = "./python/test.py"
 
-tool_to_class = {"bearer": Bearer, "codeql": CodeQL, "bandit": Bandit}
+tool_to_class = {
+    "bearer": Bearer,
+    "codeql": CodeQL,
+    "bandit": Bandit,
+    "semgrep": Semgrep,
+    "horu_sec": Horusec,
+}
 
 
 def is_positive_bm(test):
@@ -45,7 +53,9 @@ def calculate_percentages(sast_tp, sast_fp, sast_tn, sast_fn):
 
 if __name__ == "__main__":
 
-    assert len(sys.argv) > 1, f"Choose a SAST {SUPPORTED_TOOLS}"
+    assert (
+        len(sys.argv) > 1
+    ), f"Choose a SAST tool from {[tool for tool in tool_to_class.keys()]}"
 
     used_tool = sys.argv[1]
 

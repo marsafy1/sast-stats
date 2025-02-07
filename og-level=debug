@@ -1,0 +1,5 @@
+[33mWARN[0m[0000] Horusec will return a timeout after 600 seconds. This time can be customized in the cli settings. 
+[33mWARN[0m[0000] {HORUSEC_CLI} PLEASE DON'T REMOVE ".horusec" FOLDER BEFORE THE ANALYSIS FINISH! Don’t worry, we’ll remove it after the analysis ends automatically! Project sent to folder in location: [/Users/malmarsafy/Code/sast-stats/python/.horusec/fe581dd5-5937-4971-8afc-214fc856ad06] 
+[33mWARN[0m[0000] {HORUSEC_CLI} No authorization token was found, your code it is not going to be sent to horusec. Please enter a token with the -a flag to configure and save your analysis 
+[33mWARN[0m[0000] {HORUSEC_CLI} 4 VULNERABILITIES WERE FOUND IN YOUR CODE SENT TO HORUSEC, TO SEE MORE DETAILS USE THE LOG LEVEL AS DEBUG AND TRY AGAIN 
+[33mWARN[0m[0000] {HORUSEC_CLI} Horusec not show info vulnerabilities in this analysis, to see info vulnerabilities add option "--information-severity=true". For more details use (horusec start --help) command. 
