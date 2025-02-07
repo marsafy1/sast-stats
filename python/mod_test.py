@@ -123,8 +123,8 @@ def read_user(user_id: str):
 # RCE
 @app.post("/execute/")
 def execute_command(command: str):
-    exec(command)  # Vulnerable to RCE
-    return {"message": "Executed"}  # Shoud be (+)
+    exec(command)  # Shoud be (+)
+    return {"message": "Executed"}
 
 
 # Path Traversal
@@ -284,8 +284,8 @@ def read_user(user_id: str):
 # RCE
 @app.post("/execute/")
 def execute_command(command: str):
-    exec(command)  # Vulnerable to RCE
-    return {"message": "Executed"}  # Shoud be (+)
+    exec(command)  # Shoud be (+)
+    return {"message": "Executed"}
 
 
 # Path Traversal
@@ -445,8 +445,8 @@ def read_user(user_id: str):
 # RCE
 @app.post("/execute/")
 def execute_command(command: str):
-    exec(command)  # Vulnerable to RCE
-    return {"message": "Executed"}  # Shoud be (+)
+    exec(command)  # Shoud be (+)
+    return {"message": "Executed"}
 
 
 # Path Traversal
@@ -606,8 +606,8 @@ def read_user(user_id: str):
 # RCE
 @app.post("/execute/")
 def execute_command(command: str):
-    exec(command)  # Vulnerable to RCE
-    return {"message": "Executed"}  # Shoud be (+)
+    exec(command)  # Shoud be (+)
+    return {"message": "Executed"}
 
 
 # Path Traversal
@@ -767,8 +767,8 @@ def read_user(user_id: str):
 # RCE
 @app.post("/execute/")
 def execute_command(command: str):
-    exec(command)  # Vulnerable to RCE
-    return {"message": "Executed"}  # Shoud be (+)
+    exec(command)  # Shoud be (+)
+    return {"message": "Executed"}
 
 
 # Path Traversal
