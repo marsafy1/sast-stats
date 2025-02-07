@@ -5,7 +5,3 @@ def get_const_mystrey():
 def get_input_mystey():
     user_input = input()
     return user_input
-
-
-y = eval("eval(input())")
-print(y)

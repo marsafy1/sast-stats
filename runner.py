@@ -1,18 +1,17 @@
 from abc import ABC, abstractmethod
-import re
 import os
 import sys
+import json
 
-SUPPORTED_TOOLS = ["bearer"]
+SUPPORTED_TOOLS = ["bearer", "codeql"]
 OUTPUT_FOLDER_PATH = "./output"
 BENCHMARK_FILE = "./python/test.py"
-
 
 
 class SAST(ABC):
     def __init__(self):
         self.output_path = ""
-        self.analysis_result = ""
+        self.analysis_result = ""  # Should show the line
 
     @abstractmethod
     def run():
@@ -36,6 +35,7 @@ class SAST(ABC):
 class Bearer(SAST):
     def run(self):
         self.set_output_path(f"{OUTPUT_FOLDER_PATH}/{self.__class__.__name__}.txt")
+        # Execute the command
         os.system(f"./bin/bearer scan python/*.py > {self.output_path}")
         with open(self.output_path) as analysis_result:
             self.set_analysis_result(analysis_result.read())
@@ -47,12 +47,79 @@ class Bearer(SAST):
         return not self.is_positive()
 
 
+class CodeQL(SAST):
+    def run(self):
+        database_name = "py-sast-db"
+        format = "sarif-latest"
+        self.set_output_path(f"{OUTPUT_FOLDER_PATH}/{self.__class__.__name__}.sarif")
+
+        # 1. Create the DB
+        os.system(
+            f"codeql database create {database_name} --language=python --overwrite"
+        )
+        # 2. Run the analyzer
+        os.system(
+            f"codeql database analyze py-sast-db --format={format} --output={self.output_path} python-code-scanning.qls python-lgtm-full.qls python-lgtm.qls python-security-and-quality.qls python-security-experimental.qls python-security-extended.qls --download githubsecuritylab/codeql-python-queries githubsecuritylab/codeql-python-queries:security/CWE-798/HardcodedFrameworkSecrets.ql"
+        )
+        # 3. Read the output
+        with open(self.output_path) as analysis_result:
+            json_output = json.load(analysis_result)
+            results = json_output["runs"][0]["results"]
+
+        benchmarkLines = {}
+        with open(BENCHMARK_FILE) as benchmark:
+            l_i = 1
+            for line in benchmark.readlines():
+                benchmarkLines[l_i] = line.strip()
+                l_i += 1
+
+        tmp_results = ""
+
+        for result in results:
+            rule_id = result["ruleId"]
+            locations = result["locations"][0]
+            physical_locations = locations["physicalLocation"]
+            filename = physical_locations["artifactLocation"]["uri"]
+            if "test" not in filename:  # as we just want to use our benchmark files
+                continue
+            line_num = physical_locations["region"]["startLine"]
+            line = benchmarkLines[line_num]
+            tmp_results += f"{rule_id}@{filename}-L:{line_num} - {line}\n"
+
+        self.set_analysis_result(tmp_results)
+        print(self.analysis_result)
+
+    def is_positive(self, test_case):
+        return test_case in self.analysis_result
+
+    def is_negative(self, test_case):
+        return not self.is_positive()
+
+
+class Bandit(SAST):
+    def run(self):
+        self.set_output_path(f"{OUTPUT_FOLDER_PATH}/{self.__class__.__name__}.txt")
+        # Execute the command
+        os.system(f"bandit -r python/ > {self.output_path}")
+        with open(self.output_path) as analysis_result:
+            self.set_analysis_result(analysis_result.read())
+
+    def is_positive(self, test_case):
+        return test_case in self.analysis_result
+
+    def is_negative(self, test_case):
+        return not self.is_positive()
+
+
+tool_to_class = {"bearer": Bearer, "codeql": CodeQL, "bandit": Bandit}
+
+
 def is_positive_bm(test):
-    return test["category"] == "+"
+    return "+" in test["category"]
 
 
 def is_negative_bm(test):
-    return test["category"] == "-"
+    return "-" in test["category"]
 
 
 def calculate_percentages(sast_tp, sast_fp, sast_tn, sast_fn):
@@ -86,7 +153,6 @@ if __name__ == "__main__":
     assert len(sys.argv) > 1, f"Choose a SAST {SUPPORTED_TOOLS}"
 
     used_tool = sys.argv[1]
-    tool_to_class = {"bearer": Bearer}
 
     # init variables
     # Benchmark file
@@ -94,7 +160,8 @@ if __name__ == "__main__":
     bm_pos = bm_neg = 0
 
     # Analysis results
-    false_negatives = false_positives = []
+    # false_negatives = false_positives = [] # <- same reference
+    false_negatives, false_positives = [], []
     sast_tp = sast_tn = sast_fp = sast_fn = 0
 
     """
@@ -104,7 +171,7 @@ if __name__ == "__main__":
     """
     # read the used benchmark file
     with open(BENCHMARK_FILE) as benchmark:
-        for line in benchmark:
+        for line in benchmark.readlines():
             line = line.strip()
             last_hash = line.split("#")[-1]  # should be the comment
             category = None
@@ -133,7 +200,7 @@ if __name__ == "__main__":
     """
 
     analysis_output = sast.analysis_result
-
+    print(analysis_output)
     for test in test_lines:
         if sast.is_positive(test["line"]):  # means it was classified as positive
             if is_positive_bm(test):  # TP
@@ -157,11 +224,11 @@ if __name__ == "__main__":
     print(f"SAST TN {sast_tn}")
     print(f"SAST FN: {sast_fn}")
     print("------------")
-    print("False Negatives")
+    print(f"False Negatives {len(false_negatives), sast_fn}")
     for fn in false_negatives:
         print(fn)
     print("------------")
-    print("False Positives")
+    print(f"False Positives {len(false_positives), sast_fp}")
     for fp in false_positives:
         print(fp)
     print("------------")
