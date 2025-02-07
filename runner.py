@@ -1,4 +1,5 @@
 import sys
+from datetime import datetime
 from engines.bandit import Bandit
 from engines.bearer import Bearer
 from engines.codeQL import CodeQL
@@ -6,7 +7,7 @@ from engines.semgrep import Semgrep
 from engines.horu_sec import Horusec
 
 
-BENCHMARK_FILE = "./python/test.py"
+ORIGINAL_BENCHMARK_FILE = "./python/test.py"
 
 tool_to_class = {
     "bearer": Bearer,
@@ -75,7 +76,7 @@ if __name__ == "__main__":
         ###############################
     """
     # read the used benchmark file
-    with open(BENCHMARK_FILE) as benchmark:
+    with open(ORIGINAL_BENCHMARK_FILE) as benchmark:
         for line in benchmark.readlines():
             line = line.strip()
             last_hash = line.split("#")[-1]  # should be the comment
@@ -89,15 +90,20 @@ if __name__ == "__main__":
             if category:
                 test_lines.append({"line": line, "category": category})
 
+
     """
         ############################
         Setting and running the SAST
         ############################
     """
+    # Capture starting time
+    start_time = datetime.now()
+
     # run the sast tool
     sast = tool_to_class[used_tool]()
     sast.run()
 
+    endtime = datetime.now()
     """
         ###################################
         Analysis and comparing the outcomes
@@ -140,6 +146,8 @@ if __name__ == "__main__":
     print("Percentages")
     percentages = calculate_percentages(sast_tp, sast_fp, sast_tn, sast_fn)
     print(f"TP Percentage: {percentages[0]:.2f}%")
+    print(f"FN Percentage: {percentages[3]:.2f}%")
     print(f"FP Percentage: {percentages[1]:.2f}%")
     print(f"TN Percentage: {percentages[2]:.2f}%")
-    print(f"FN Percentage: {percentages[3]:.2f}%")
+    print("------------")
+    print(f"Runtime: {str(endtime - start_time).split(":")[-1]}s")

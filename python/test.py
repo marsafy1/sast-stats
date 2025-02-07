@@ -1,14 +1,13 @@
-# Real count
-# Total Test cases:
-# Positives:
-# Negatives:
-
 import re
 import requests
 import os
-from flask import Flask
 import base64
+
 from test2 import get_const_mystrey, get_input_mystey
+from http.client import HTTPException
+from flask import Flask
+from fastapi import FastAPI
+from sqlalchemy import create_engine
 
 
 def sanitize_input(user_input):
@@ -68,7 +67,7 @@ eval("input()")  # Should be: (-)
 # eval with user input
 eval("eval(input())")  # Should be: (+) < Good one
 eval("EvAl(input())".lower())  # Should be: (+) < Good one
-eval(base64.b64decode("ZXZhbChpbnB1dCgpKQ=="))  # Should be: (+) < Good one+1
+eval("base64.b64decode('ZXZhbChpbnB1dCgpKQ==')")  # Should be: (+) < Good one+1
 
 # overwritten the variable
 user_input = "5*5"
@@ -97,7 +96,66 @@ response = requests.get("https://api.example.com/data")
 eval(response.headers.get("Content-Type"))  # Should be (+)
 
 
+# Mini flask app
 def application1():
     app = Flask(__name__)
     app.secret_key = "ABCDEFG"  # Should be (+)
     app.run()
+
+
+# FastAPI
+DATABASE_URL = "sqlite:///./test.db"
+engine = create_engine(DATABASE_URL)
+
+app = FastAPI()
+
+
+# SQL injection
+@app.get("/users/{user_id}")
+def read_user(user_id: str):
+    query = f"SELECT * FROM users WHERE id = '{user_id}'"  # Shoud be (+)
+    with engine.connect() as connection:
+        result = connection.execute(query)
+        user = result.fetchone()
+    return user
+
+
+# RCE
+@app.post("/execute/")
+def execute_command(command: str):
+    exec(command)  # Vulnerable to RCE
+    return {"message": "Executed"}  # Shoud be (+)
+
+
+# Path Traversal
+BASE_DIR = "/safe/base/dir"
+
+
+@app.get("/files/{filename}")
+def read_file(filename: str):
+    file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
+    with open(file_path, "r") as f:
+        return {"content": f.read()}
+
+
+@app.get("/files/{filename}")
+def read_safe_file(filename: str):
+    safe_path = os.path.join(BASE_DIR, filename)
+    # Prevent directory traversal
+    if not safe_path.startswith(BASE_DIR):
+        raise HTTPException(status_code=403, detail="Forbidden path")
+
+    if not os.path.exists(safe_path):
+        raise HTTPException(status_code=404, detail="File not found")
+
+    with open(safe_path, "r") as f:
+        return {"content": f.read()}
+
+
+"""
+
+
+                >>>>>> Repaeted the code above 4 times to measure speed <<<<<<
+
+
+"""

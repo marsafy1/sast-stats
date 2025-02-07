@@ -11,93 +11,485 @@ Language  Default Rules  Custom Rules  Files
 Python    88             0             1      
 
 
+CRITICAL: Unsanitized external input in code generation [CWE-94]
+https://docs.bearer.com/reference/rules/python_lang_code_injection
+To ignore this finding, run: bearer ignore add 11b6d3ece9002d328f90434ca8e4d502_0
+
+File: python/mod_test.py:126
+
+ 126     exec(command)  # Vulnerable to RCE
+
+CRITICAL: Unsanitized external input in code generation [CWE-94]
+https://docs.bearer.com/reference/rules/python_lang_code_injection
+To ignore this finding, run: bearer ignore add 11b6d3ece9002d328f90434ca8e4d502_1
+
+File: python/mod_test.py:287
+
+ 287     exec(command)  # Vulnerable to RCE
+
+CRITICAL: Unsanitized external input in code generation [CWE-94]
+https://docs.bearer.com/reference/rules/python_lang_code_injection
+To ignore this finding, run: bearer ignore add 11b6d3ece9002d328f90434ca8e4d502_2
+
+File: python/mod_test.py:448
+
+ 448     exec(command)  # Vulnerable to RCE
+
+CRITICAL: Unsanitized external input in code generation [CWE-94]
+https://docs.bearer.com/reference/rules/python_lang_code_injection
+To ignore this finding, run: bearer ignore add 11b6d3ece9002d328f90434ca8e4d502_3
+
+File: python/mod_test.py:609
+
+ 609     exec(command)  # Vulnerable to RCE
+
+CRITICAL: Unsanitized external input in code generation [CWE-94]
+https://docs.bearer.com/reference/rules/python_lang_code_injection
+To ignore this finding, run: bearer ignore add 11b6d3ece9002d328f90434ca8e4d502_4
+
+File: python/mod_test.py:770
+
+ 770     exec(command)  # Vulnerable to RCE
+
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_0
 
-File: python/test.py:30
+File: python/mod_test.py:29
 
- 30 eval(get_const_mystrey())  # Should be: (-)
+ 29 eval(get_const_mystrey())  # Should be: (-)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_1
 
-File: python/test.py:33
+File: python/mod_test.py:32
 
- 33 eval(get_input_mystey())  # Should be: (+)
+ 32 eval(get_input_mystey())  # Should be: (+)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_2
 
-File: python/test.py:39
+File: python/mod_test.py:38
 
- 39 eval(user_input)  # Should be: (+)
+ 38 eval(user_input)  # Should be: (+)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_3
 
-File: python/test.py:43
+File: python/mod_test.py:42
 
- 43     eval(user_input)  # Should be: (-)
+ 42     eval(user_input)  # Should be: (-)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_4
 
-File: python/test.py:46
+File: python/mod_test.py:45
 
- 46 eval(user_input)  # Should be: (-)
+ 45 eval(user_input)  # Should be: (-)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_5
 
-File: python/test.py:50
+File: python/mod_test.py:49
 
- 50 eval(sanitize_input(user_input))  # Should be: (-)
+ 49 eval(sanitize_input(user_input))  # Should be: (-)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_6
 
-File: python/test.py:56
+File: python/mod_test.py:55
 
- 56 eval(f"{user_input}")  # Should be: (+)
+ 55 eval(f"{user_input}")  # Should be: (+)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_7
 
-File: python/test.py:59
+File: python/mod_test.py:58
 
- 59 eval("mys".replace("mys", user_input))  # Should be: (+)
+ 58 eval("mys".replace("mys", user_input))  # Should be: (+)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_8
 
-File: python/test.py:63
+File: python/mod_test.py:62
 
- 63 eval(str(user_input))  # Should be: (+)
+ 62 eval(str(user_input))  # Should be: (+)
 
 CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
 https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
 To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_9
 
-File: python/test.py:92
+File: python/mod_test.py:91
 
- 92 eval(input())  # Should be (+)
+ 91 eval(input())  # Should be (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_10
+
+File: python/mod_test.py:190
+
+ 190 eval(get_const_mystrey())  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_11
+
+File: python/mod_test.py:193
+
+ 193 eval(get_input_mystey())  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_12
+
+File: python/mod_test.py:199
+
+ 199 eval(user_input)  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_13
+
+File: python/mod_test.py:203
+
+ 203     eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_14
+
+File: python/mod_test.py:206
+
+ 206 eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_15
+
+File: python/mod_test.py:210
+
+ 210 eval(sanitize_input(user_input))  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_16
+
+File: python/mod_test.py:216
+
+ 216 eval(f"{user_input}")  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_17
+
+File: python/mod_test.py:219
+
+ 219 eval("mys".replace("mys", user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_18
+
+File: python/mod_test.py:223
+
+ 223 eval(str(user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_19
+
+File: python/mod_test.py:252
+
+ 252 eval(input())  # Should be (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_20
+
+File: python/mod_test.py:351
+
+ 351 eval(get_const_mystrey())  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_21
+
+File: python/mod_test.py:354
+
+ 354 eval(get_input_mystey())  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_22
+
+File: python/mod_test.py:360
+
+ 360 eval(user_input)  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_23
+
+File: python/mod_test.py:364
+
+ 364     eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_24
+
+File: python/mod_test.py:367
+
+ 367 eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_25
+
+File: python/mod_test.py:371
+
+ 371 eval(sanitize_input(user_input))  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_26
+
+File: python/mod_test.py:377
+
+ 377 eval(f"{user_input}")  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_27
+
+File: python/mod_test.py:380
+
+ 380 eval("mys".replace("mys", user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_28
+
+File: python/mod_test.py:384
+
+ 384 eval(str(user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_29
+
+File: python/mod_test.py:413
+
+ 413 eval(input())  # Should be (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_30
+
+File: python/mod_test.py:512
+
+ 512 eval(get_const_mystrey())  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_31
+
+File: python/mod_test.py:515
+
+ 515 eval(get_input_mystey())  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_32
+
+File: python/mod_test.py:521
+
+ 521 eval(user_input)  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_33
+
+File: python/mod_test.py:525
+
+ 525     eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_34
+
+File: python/mod_test.py:528
+
+ 528 eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_35
+
+File: python/mod_test.py:532
+
+ 532 eval(sanitize_input(user_input))  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_36
+
+File: python/mod_test.py:538
+
+ 538 eval(f"{user_input}")  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_37
+
+File: python/mod_test.py:541
+
+ 541 eval("mys".replace("mys", user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_38
+
+File: python/mod_test.py:545
+
+ 545 eval(str(user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_39
+
+File: python/mod_test.py:574
+
+ 574 eval(input())  # Should be (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_40
+
+File: python/mod_test.py:673
+
+ 673 eval(get_const_mystrey())  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_41
+
+File: python/mod_test.py:676
+
+ 676 eval(get_input_mystey())  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_42
+
+File: python/mod_test.py:682
+
+ 682 eval(user_input)  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_43
+
+File: python/mod_test.py:686
+
+ 686     eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_44
+
+File: python/mod_test.py:689
+
+ 689 eval(user_input)  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_45
+
+File: python/mod_test.py:693
+
+ 693 eval(sanitize_input(user_input))  # Should be: (-)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_46
+
+File: python/mod_test.py:699
+
+ 699 eval(f"{user_input}")  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_47
+
+File: python/mod_test.py:702
+
+ 702 eval("mys".replace("mys", user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_48
+
+File: python/mod_test.py:706
+
+ 706 eval(str(user_input))  # Should be: (+)
+
+CRITICAL: Unsanitized user input in 'eval' type function [CWE-95]
+https://docs.bearer.com/reference/rules/python_lang_eval_using_user_input
+To ignore this finding, run: bearer ignore add 4c4897700277cca4ae6e8a5514f54726_49
+
+File: python/mod_test.py:735
+
+ 735 eval(input())  # Should be (+)
 
 CRITICAL: Unsanitized external input in SQL query [CWE-89]
 https://docs.bearer.com/reference/rules/python_lang_sql_injection
 To ignore this finding, run: bearer ignore add eea0fa33b1bcf48bd63365fb7f62ac7d_0
 
-File: python/test.py:84
+File: python/mod_test.py:83
 
- 84 cursor.execute(f"SELECT * FROM USERS WHERE username = {noway};")  # Should be: (+)
+ 83 cursor.execute(f"SELECT * FROM USERS WHERE username = {noway};")  # Should be: (+)
+
+CRITICAL: Unsanitized external input in SQL query [CWE-89]
+https://docs.bearer.com/reference/rules/python_lang_sql_injection
+To ignore this finding, run: bearer ignore add eea0fa33b1bcf48bd63365fb7f62ac7d_1
+
+File: python/mod_test.py:244
+
+ 244 cursor.execute(f"SELECT * FROM USERS WHERE username = {noway};")  # Should be: (+)
+
+CRITICAL: Unsanitized external input in SQL query [CWE-89]
+https://docs.bearer.com/reference/rules/python_lang_sql_injection
+To ignore this finding, run: bearer ignore add eea0fa33b1bcf48bd63365fb7f62ac7d_2
+
+File: python/mod_test.py:405
+
+ 405 cursor.execute(f"SELECT * FROM USERS WHERE username = {noway};")  # Should be: (+)
+
+CRITICAL: Unsanitized external input in SQL query [CWE-89]
+https://docs.bearer.com/reference/rules/python_lang_sql_injection
+To ignore this finding, run: bearer ignore add eea0fa33b1bcf48bd63365fb7f62ac7d_3
+
+File: python/mod_test.py:566
+
+ 566 cursor.execute(f"SELECT * FROM USERS WHERE username = {noway};")  # Should be: (+)
+
+CRITICAL: Unsanitized external input in SQL query [CWE-89]
+https://docs.bearer.com/reference/rules/python_lang_sql_injection
+To ignore this finding, run: bearer ignore add eea0fa33b1bcf48bd63365fb7f62ac7d_4
+
+File: python/mod_test.py:727
+
+ 727 cursor.execute(f"SELECT * FROM USERS WHERE username = {noway};")  # Should be: (+)
 
 HIGH: Hard-coded secret detected. [CWE-798]
 https://docs.bearer.com/reference/rules/gitleaks
@@ -105,9 +497,9 @@ To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_
 
 Detected: Github Personal Access Token
 
-File: python/test.py:19
+File: python/mod_test.py:18
 
- 19 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"  #  Should be: (+)
+ 18 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"  #  Should be: (+)
 
 HIGH: Hard-coded secret detected. [CWE-798]
 https://docs.bearer.com/reference/rules/gitleaks
@@ -115,9 +507,9 @@ To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_
 
 Detected: PKCS8 private key
 
-File: python/test.py:20
+File: python/mod_test.py:19
 
- 20 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"  #  Should be: (+)
+ 19 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"  #  Should be: (+)
 
 HIGH: Hard-coded secret detected. [CWE-798]
 https://docs.bearer.com/reference/rules/gitleaks
@@ -125,15 +517,375 @@ To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_
 
 Detected: Github Personal Access Token
 
-File: python/test.py:23
+File: python/mod_test.py:22
 
- 23 # SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0" # Should be: (+)
+ 22 # SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0" # Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_3
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:179
+
+ 179 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_4
+
+Detected: PKCS8 private key
+
+File: python/mod_test.py:180
+
+ 180 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_5
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:183
+
+ 183 # SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0" # Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_6
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:340
+
+ 340 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_7
+
+Detected: PKCS8 private key
+
+File: python/mod_test.py:341
+
+ 341 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_8
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:344
+
+ 344 # SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0" # Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_9
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:501
+
+ 501 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_10
+
+Detected: PKCS8 private key
+
+File: python/mod_test.py:502
+
+ 502 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_11
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:505
+
+ 505 # SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0" # Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_12
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:662
+
+ 662 SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_13
+
+Detected: PKCS8 private key
+
+File: python/mod_test.py:663
+
+ 663 GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvPIBZDANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDPo8OxKW8JjeNT\nMMWuAAGcA9HBqTijz3hSk9cXRTVAm6zqawftXp7dO4zK/YrkyTd4fPtDTNoFw0b2\nIVAjxxkdAbnPTzBorzAXV74WDRFHpergQo8BqEVuQMIisbUH3qML5o13LhXIzAFM\nnM1hER6+WUDquXI1uYRR2LlkbFBXCVeb7AI7Gpu+Ge66vK3d9DnBTXRCIZhX9Yos\nz4l8AmcpWuT0v7oaXsjCDdiFPFnCR1InvP5KNLpeoKUUNPd3dlh6nkNYNmcnym1K\nENIxRwo16UCtlYkJRrKoWer87nmmast2OaulYVjqTcEzlLRTzXbhrZADtGNmGJd9\nnVSQWJl1AgMBAAECggEABlwbvay+i+peph5TpQq3AeepYGcl0aP51ChXFDgNyNbR\nKwpFieMLYUyro/lewbcwDcQLkM96dhFkdlwlhOhaP+Xc98PogFcCqr8Ilsr7q9gh\nzjtQ/1n/a8BsBygDms7E67O6GDEUgGakkODUoZPRVJSN7808+aGfCJVncvNRBU65\nJ3UN3lJAgO3qhdT4lkzNvPeSihSFbs82zJQPUW8vNAtZwCPH1mB373jdM/EjU7aN\ngEtHtx9pP0xFDOBU5mX+4P0VcUjb54vrD8u8N3wGmIWu7P7+w4EpbX+d4T+m0xPz\n7MNYj4VESTLuJMpX45S42QOZUHVgm0CgPgMio360QQKBgQDqT9rVupxjS/AimmaP\nspDNdUPLjecXwAfOSYmTxSs5vJFj2a2liWKHH+qfG/+mTAw2qeAm5idQ3c4PwS9o\npGlwtru5LB+uVaSdLpVQBPxcQPwGeKvYyZW7BcMIGzlPG+77zKa5Iviu7uOyPcS6\n61uab8NtqKFj14ZzEZqChBnxOQKBgQDi2+WkzVZTP0RPF3lDarjdZ6wyvQVBgf7f\nic5Y/7mX+GguRlJGSK2SU4+KazvxrJM0dwvba6VMa6D4p0Wbkc9FlqiAAfbxOTdr\nem9ZSsiWFLBsHNygM3UpzHT090cjj6fk/x0bze4WaQWlka4MjCkysMYLDXJBtVqE\nf/xGnfh2HQKBgFYlW+CehmbfgX9HYxPL4/8V8QICvwb1XClU0hcZM6Y7lPywCG7H\nDwl9C4bKBXj/lrH2TOogTi4mDl+ueB6x6+470NLozREMfcQoX08XNi042zAJ56yB\nmOI04Rq236AdNgUvndCNcf7m56IdoZnTdE9YbfKAQC30DIN74mG/7cXJAoGAT2d+\nkteYfpzncPOba0CAomZ2PHAy1cIFjwKyKi6gLJQzCvdsNtObhVsgI+fy3F12TOfa\nS5v7CKundUE/OPupXAcmxV9qqvZG8qSxMsTdPsLRGZZkluJMASxiR5gB222d66Zr\n7t5+lnN+GXzLOfMZPHfpadb0BhHPNA+EIseKPvUCgYEAid/dY8w6IRzNKWNQGlob\nEqCGDv7Fx77lHAUysJd7lYD9DD4nFOjes2IN6eQA9uc1BQP1B60+ZV9pwVa9nYmu\nJ89vSgqRSRlvN/zqILMkah4oAFaHOf7Uxjxr9jDK+vo7NHteg/JoVRVpu6M2NiWE\nnQq5VN2Rk5RZEkDxXetb8hQ=\n-----END PRIVATE KEY-----"  #  Should be: (+)
+
+HIGH: Hard-coded secret detected. [CWE-798]
+https://docs.bearer.com/reference/rules/gitleaks
+To ignore this finding, run: bearer ignore add 449faec69801973b3d7630479cfd4169_14
+
+Detected: Github Personal Access Token
+
+File: python/mod_test.py:666
+
+ 666 # SECRET_KEY = "ghp_a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0" # Should be: (+)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_0
+
+File: python/mod_test.py:136
+
+ 136     file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_1
+
+File: python/mod_test.py:137
+
+ 137     with open(file_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_2
+
+File: python/mod_test.py:143
+
+ 143     safe_path = os.path.join(BASE_DIR, filename)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_3
+
+File: python/mod_test.py:145
+
+ 145     if not safe_path.startswith(BASE_DIR):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_4
+
+File: python/mod_test.py:148
+
+ 148     if not os.path.exists(safe_path):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_5
+
+File: python/mod_test.py:151
+
+ 151     with open(safe_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_6
+
+File: python/mod_test.py:297
+
+ 297     file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_7
+
+File: python/mod_test.py:298
+
+ 298     with open(file_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_8
+
+File: python/mod_test.py:304
+
+ 304     safe_path = os.path.join(BASE_DIR, filename)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_9
+
+File: python/mod_test.py:306
+
+ 306     if not safe_path.startswith(BASE_DIR):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_10
+
+File: python/mod_test.py:309
+
+ 309     if not os.path.exists(safe_path):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_11
+
+File: python/mod_test.py:312
+
+ 312     with open(safe_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_12
+
+File: python/mod_test.py:458
+
+ 458     file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_13
+
+File: python/mod_test.py:459
+
+ 459     with open(file_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_14
+
+File: python/mod_test.py:465
+
+ 465     safe_path = os.path.join(BASE_DIR, filename)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_15
+
+File: python/mod_test.py:467
+
+ 467     if not safe_path.startswith(BASE_DIR):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_16
+
+File: python/mod_test.py:470
+
+ 470     if not os.path.exists(safe_path):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_17
+
+File: python/mod_test.py:473
+
+ 473     with open(safe_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_18
+
+File: python/mod_test.py:619
+
+ 619     file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_19
+
+File: python/mod_test.py:620
+
+ 620     with open(file_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_20
+
+File: python/mod_test.py:626
+
+ 626     safe_path = os.path.join(BASE_DIR, filename)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_21
+
+File: python/mod_test.py:628
+
+ 628     if not safe_path.startswith(BASE_DIR):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_22
+
+File: python/mod_test.py:631
+
+ 631     if not os.path.exists(safe_path):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_23
+
+File: python/mod_test.py:634
+
+ 634     with open(safe_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_24
+
+File: python/mod_test.py:780
+
+ 780     file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_25
+
+File: python/mod_test.py:781
+
+ 781     with open(file_path, "r") as f:
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_26
+
+File: python/mod_test.py:787
+
+ 787     safe_path = os.path.join(BASE_DIR, filename)
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_27
+
+File: python/mod_test.py:789
+
+ 789     if not safe_path.startswith(BASE_DIR):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_28
+
+File: python/mod_test.py:792
+
+ 792     if not os.path.exists(safe_path):
+
+HIGH: Unsanitized dynamic input in file path [CWE-22]
+https://docs.bearer.com/reference/rules/python_lang_path_traversal
+To ignore this finding, run: bearer ignore add c95dbdab4dd9158586e1d6804e86f86d_29
+
+File: python/mod_test.py:795
+
+ 795     with open(safe_path, "r") as f:
 =====================================
 
-89 checks, 14 findings
+89 checks, 105 findings
 
-CRITICAL: 11 (CWE-89, CWE-95)
-HIGH: 3 (CWE-798)
+CRITICAL: 60 (CWE-89, CWE-94, CWE-95)
+HIGH: 45 (CWE-22, CWE-798)
 MEDIUM: 0
 LOW: 0
 WARNING: 0
