@@ -11,7 +11,7 @@ class SAST(ABC):
         self.OUTPUT_FOLDER_PATH = "./output"
         self.output_path = ""
         self.analysis_result = ""
-        self.manipulate_benchmark_file(7)
+        self.manipulate_benchmark_file(62)
 
     @abstractmethod
     def run():

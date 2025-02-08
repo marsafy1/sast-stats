@@ -7,7 +7,7 @@ class Horusec(SAST):
         self.set_output_path(f"{self.OUTPUT_FOLDER_PATH}/{self.__class__.__name__}.txt")
         # Execute the command
         os.system(
-            f"horusec start -p ./python/ -D -log-level=debug > {self.output_path}"
+            f"horusec start -p ./python/ -D -log-level=debug --information-severity=true> {self.output_path}"
         )
         with open(self.output_path) as analysis_result:
             self.set_analysis_result(analysis_result.read())

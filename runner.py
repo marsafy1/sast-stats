@@ -161,7 +161,7 @@ def perform_analysis(anaysis_stopped):
     print(f"FP Percentage: {percentages[1]:.2f}%")
     print(f"TN Percentage: {percentages[2]:.2f}%")
     print("------------")
-    print(f"Runtime: {str(endtime - start_time).split(":")[-1]}s")
+    print(f"Runtime: {str(endtime - start_time)}")
 
 
 def measure_sys(anaysis_stopped):
@@ -177,11 +177,11 @@ def measure_sys(anaysis_stopped):
         mem_percentages.append(memory_usage.percent)
         time.sleep(1)
     avg_cpu = sum(cpu_percentages) / len(cpu_percentages)
-    avg_mem = sum(mem_percentages) / len(mem_percentages)
-    print(cpu_percentages)
-    print(mem_percentages)
+
     print(f"Average CPU Usage {avg_cpu}% per second")
-    print(f"Average Memory Usage {bytes_to_mb(avg_mem)} MBs")
+    print(f"Min CPU Usage: {min(cpu_percentages)}")
+    print(f"Max CPU Usage: {max(cpu_percentages)}")
+    print(cpu_percentages)
 
 
 if __name__ == "__main__":
