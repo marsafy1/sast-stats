@@ -1,4 +1,7 @@
+import threading
 import sys
+import psutil
+import time
 from datetime import datetime
 from engines.bandit import Bandit
 from engines.bearer import Bearer
@@ -6,6 +9,8 @@ from engines.codeQL import CodeQL
 from engines.semgrep import Semgrep
 from engines.horu_sec import Horusec
 
+# Get the current process
+CURRENT_PROCESS = psutil.Process()
 
 ORIGINAL_BENCHMARK_FILE = "./python/test.py"
 
@@ -18,12 +23,20 @@ tool_to_class = {
 }
 
 
+def not_empty(test):
+    line = test["line"].replace(" ", "")
+    return len(line) > 0
+
+
 def is_positive_bm(test):
-    return "+" in test["category"]
+    return not_empty(test) and test["category"] and "+" in test["category"]
 
 
 def is_negative_bm(test):
-    return "-" in test["category"]
+
+    return not_empty(test) and (
+        (test["category"] and "-" in test["category"]) or (not test["category"])
+    )
 
 
 def calculate_percentages(sast_tp, sast_fp, sast_tn, sast_fn):
@@ -52,7 +65,7 @@ def calculate_percentages(sast_tp, sast_fp, sast_tn, sast_fn):
     return tp_percentage, fp_percentage, tn_percentage, fn_percentage
 
 
-if __name__ == "__main__":
+def perform_analysis(anaysis_stopped):
 
     assert (
         len(sys.argv) > 1
@@ -84,12 +97,10 @@ if __name__ == "__main__":
             if "+" in last_hash:
                 bm_pos += 1
                 category = "+"
-            elif "-" in last_hash:
+            else:
                 bm_neg += 1
                 category = "-"
-            if category:
-                test_lines.append({"line": line, "category": category})
-
+            test_lines.append({"line": line, "category": category})
 
     """
         ############################
@@ -125,7 +136,7 @@ if __name__ == "__main__":
                 false_negatives.append(test["line"])
             elif is_negative_bm(test):
                 sast_tn += 1
-
+    anaysis_stopped.set()
     print("------------")
     print(f"Benchmark Positives: {bm_pos}")
     print(f"Benchmark Negatives: {bm_neg}")
@@ -141,7 +152,7 @@ if __name__ == "__main__":
     print("------------")
     print(f"False Positives {len(false_positives), sast_fp}")
     for fp in false_positives:
-        print(fp)
+        print(f"{fp}, {len(fp)}")
     print("------------")
     print("Percentages")
     percentages = calculate_percentages(sast_tp, sast_fp, sast_tn, sast_fn)
@@ -151,3 +162,40 @@ if __name__ == "__main__":
     print(f"TN Percentage: {percentages[2]:.2f}%")
     print("------------")
     print(f"Runtime: {str(endtime - start_time).split(":")[-1]}s")
+
+
+def measure_sys(anaysis_stopped):
+    def bytes_to_mb(bytes_value):
+        return bytes_value / (1024**2)
+
+    cpu_percentages = []
+    mem_percentages = []
+    while True and not anaysis_stopped.is_set():
+        cpu_percent = psutil.cpu_percent(interval=1)
+        memory_usage = psutil.virtual_memory()
+        cpu_percentages.append(cpu_percent)
+        mem_percentages.append(memory_usage.percent)
+        time.sleep(1)
+    avg_cpu = sum(cpu_percentages) / len(cpu_percentages)
+    avg_mem = sum(mem_percentages) / len(mem_percentages)
+    print(cpu_percentages)
+    print(mem_percentages)
+    print(f"Average CPU Usage {avg_cpu}% per second")
+    print(f"Average Memory Usage {bytes_to_mb(avg_mem)} MBs")
+
+
+if __name__ == "__main__":
+    anaysis_stopped = threading.Event()
+
+    sys_resources_thrd = threading.Thread(target=measure_sys, args=(anaysis_stopped,))
+    sast_analysis_thrd = threading.Thread(
+        target=perform_analysis, args=(anaysis_stopped,)
+    )
+
+    # Start threads execution
+    sys_resources_thrd.start()
+    sast_analysis_thrd.start()
+
+    # Stop the execution of the main program
+    sys_resources_thrd.join()
+    sast_analysis_thrd.join()

@@ -113,7 +113,7 @@ app = FastAPI()
 # SQL injection
 @app.get("/users/{user_id}")
 def read_user(user_id: str):
-    query = f"SELECT * FROM users WHERE id = '{user_id}'"  # Shoud be (+)
+    query = f"SELECT * FROM users WHERE id = '{user_id}';"  # Input from endpoint. Shoud be (+)
     with engine.connect() as connection:
         result = connection.execute(query)
         user = result.fetchone()
@@ -133,8 +133,8 @@ BASE_DIR = "/safe/base/dir"
 
 @app.get("/files/{filename}")
 def read_file(filename: str):
-    file_path = os.path.join(BASE_DIR, filename)  # Shoud be (+)
-    with open(file_path, "r") as f:
+    file_path = os.path.join(BASE_DIR, filename)
+    with open(file_path, "r") as f:  # Shoud be (+)
         return {"content": f.read()}
 
 
@@ -148,7 +148,7 @@ def read_safe_file(filename: str):
     if not os.path.exists(safe_path):
         raise HTTPException(status_code=404, detail="File not found")
 
-    with open(safe_path, "r") as f:
+    with open(safe_path, "r") as f:  # Shoud be (-)
         return {"content": f.read()}
 
 

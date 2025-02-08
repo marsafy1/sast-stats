@@ -3,12 +3,15 @@ from abc import ABC, abstractmethod
 
 class SAST(ABC):
     def __init__(self):
+        # 1,000 (7)
+        # 2,500 (32)
+        # 10,000 (62)
         self.ORIGINAL_BENCHMARK_FILE = "./python/test.py"
         self.BENCHMARK_FILE = "./python/mod_test.py"
         self.OUTPUT_FOLDER_PATH = "./output"
         self.output_path = ""
         self.analysis_result = ""
-        self.manipulate_benchmark_file()
+        self.manipulate_benchmark_file(7)
 
     @abstractmethod
     def run():

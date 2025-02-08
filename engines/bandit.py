@@ -5,8 +5,9 @@ from engines.base_engine import SAST
 class Bandit(SAST):
     def run(self):
         self.set_output_path(f"{self.OUTPUT_FOLDER_PATH}/{self.__class__.__name__}.txt")
+        # Activate the venv
         # Execute the command
-        os.system(f"bandit -r python/ > {self.output_path}")
+        os.system(f"source venv/bin/activate && bandit -r python/ > {self.output_path}")
         with open(self.output_path) as analysis_result:
             self.set_analysis_result(analysis_result.read())
 
