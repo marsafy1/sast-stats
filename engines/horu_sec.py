@@ -15,5 +15,5 @@ class Horusec(SAST):
     def is_positive(self, test_case):
         return test_case in self.analysis_result
 
-    def is_negative(self, test_case):
+    def is_negative(self, case):
         return not self.is_positive()
